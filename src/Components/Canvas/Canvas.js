@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import classes from './Canvas.module.css'
+import Card from '../Card'
 
 function Canvas(props) {
   const canvasRef = useRef(null);
@@ -27,6 +28,7 @@ function Canvas(props) {
 
     contextRef.current = context;
 
+    setCoordinateArray([]);
 }, [props.url])
 
   const startDrawing = ({nativeEvent}) => {
@@ -64,7 +66,7 @@ function Canvas(props) {
     // contextRef.current.stroke();
 
     coordinateArray.map(coordinate => {
-        contextRef.current.fillRect(coordinate[0], coordinate[1], coordinate[2], coordinate[3]);
+        return contextRef.current.fillRect(coordinate[0], coordinate[1], coordinate[2], coordinate[3]);
     })
 
     contextRef.current.fillRect(x, y, w, h);
@@ -87,14 +89,29 @@ function Canvas(props) {
     setIsDrawing(false);
   }
 
+  let coordinateCard = coordinateArray.map(coordinate => {
+      return (
+          <Card 
+            x = {coordinate[0]}
+            y = {coordinate[1]}
+            w = {coordinate[2]}
+            h = {coordinate[3]}/>
+      )
+  })
+
   return(
-        <canvas
-          className = {classes.CanvasContainer}
-          onMouseDown = {startDrawing}
-          onMouseUp = {finishDrawing}
-          onMouseMove = {draw}
-          onMouseLeave = {stopDrawing}
-          ref = {canvasRef}/>   
+        <div className = {classes.Container}>
+            <canvas
+                className = {classes.CanvasContainer}
+                onMouseDown = {startDrawing}
+                onMouseUp = {finishDrawing}
+                onMouseMove = {draw}
+                onMouseLeave = {stopDrawing}
+                ref = {canvasRef}/> 
+                
+                <div className = {classes.CardContainer}>{coordinateCard}</div>
+                
+        </div>
   )
 }
 

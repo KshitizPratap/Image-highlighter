@@ -15,10 +15,6 @@ img{
   position: absolute;
 }
 
-.CanvasContainer{
-  /* background-color: black; */
-  position: relative;
-  /* opacity: 0.2; */
-  z-index: 5;
-  
+.NoDisplay{
+  display: none;
 }

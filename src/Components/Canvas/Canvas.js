@@ -32,8 +32,6 @@ function Canvas(props) {
 }, [props.url])
 
   const startDrawing = ({nativeEvent}) => {
-
-    console.log(nativeEvent)
     const {offsetX, offsetY} = nativeEvent
 
     setStartCoordinate([offsetX, offsetY])
@@ -54,8 +52,8 @@ function Canvas(props) {
 
     setEndCoordinate([offsetX, offsetY])
 
-    console.log("[Start Coordinate] : x = " + startCoordinate[0] + ", y = " + startCoordinate[1])
-    console.log("[End Coordinate] : x = " + endCoordinate[0] + ", y = " + endCoordinate[1])
+    // console.log("[Start Coordinate] : x = " + startCoordinate[0] + ", y = " + startCoordinate[1])
+    // console.log("[End Coordinate] : x = " + endCoordinate[0] + ", y = " + endCoordinate[1])
 
     const x = startCoordinate[0];
     const y = startCoordinate[1];
@@ -89,13 +87,14 @@ function Canvas(props) {
     setIsDrawing(false);
   }
 
-  let coordinateCard = coordinateArray.map(coordinate => {
+  let coordinateCard = coordinateArray.map((coordinate, key) => {
       return (
           <Card 
             x = {coordinate[0]}
             y = {coordinate[1]}
             w = {coordinate[2]}
-            h = {coordinate[3]}/>
+            h = {coordinate[3]}
+            key = {key}/>
       )
   })
 

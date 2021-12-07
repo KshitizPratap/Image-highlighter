@@ -4,9 +4,12 @@
     height: 18vh;
     border-radius: 5px;
     margin: 5px;
-    background-color: brown;
 }
 
 .Container p{
     margin-left: 10px;
+}
+
+.NoDiplay{
+    display: none;
 }

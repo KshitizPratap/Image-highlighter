@@ -14,7 +14,6 @@
     padding-top: 2.5rem;
     display: flex;
     flex-flow: wrap row;
-    justify-content: space-evenly;
     position: absolute;
     overflow: auto;
     top: 0;

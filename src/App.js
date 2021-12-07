@@ -10,7 +10,11 @@ function App() {
   const [show, setShow] = useState(false);
 
   const fileHandler = (event) => {
-    seturl(URL.createObjectURL(event.target.files[0]));
+    if(event.target.files[0] !== url){
+      console.log("[event.target] " + event.target);
+      console.log(url)
+      seturl(URL.createObjectURL(event.target.files[0]));
+    }
   }
 
   const imageLoaderHandler = () => {
@@ -18,7 +22,6 @@ function App() {
   }
 
   const fileSelector = () => {
-    console.log(inputRef.current)
     inputRef.current.click();
   }
 

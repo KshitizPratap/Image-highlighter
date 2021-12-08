@@ -5,6 +5,7 @@
 }
 .CanvasContainer{
     position: relative;
+    cursor: pointer;
     z-index: 5;
   }
 
